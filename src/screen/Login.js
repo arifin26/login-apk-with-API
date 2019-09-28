@@ -30,7 +30,7 @@ class Login extends React.Component {
     AsyncStorage.getItem('token')
     .then(value => {
       if(value != null){
-        this.props.navigation.navigate('app')}
+        this.props.navigation.navigate('Home')}
       }
     )
     }

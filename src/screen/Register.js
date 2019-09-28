@@ -12,7 +12,7 @@ class Register extends React.Component{
 
     }
     register = (username, email, password) => {
-            this.setState({modaVisibel:true})
+            this.setState({modalVisible:true})
         fetch('https://penjualanapp-api.herokuapp.com/api/v1/auth/register', {
           method: 'POST',
           headers: {
@@ -28,45 +28,41 @@ class Register extends React.Component{
           .then(response => response.json())
           .then(response => {
             if (response.token) {
+              // alert(response.token)
               AsyncStorage.setItem('token', response.token)
-              this.props.navigation.navigate('app')
-    
-            } else if (response.username) {
+              this.props.navigation.navigate('Home')
+            } else if(response.username){
               alert(response.username)
-            } else if (response.email) {
-              alert(response.email)
-            } else if (this.state.password != this.state.confirPassword) {
-              alert('password sidak sama')
+            }else if(response.password){
+              alert(response.password)
             }
             
-          })
-    
-          .then(response => {
-            this.setState({ modaVisibel: false })
+            this.setState({ modalVisible: false })
           })
           .catch(error => {
-            this.setState({ modaVisibel: false })
             console.log(error)
             alert('error')
+            this.setState({ modalVisible: false })
           })
       }
 
+       
+ 
     render(){
         let  {username,email,password} = this.state
         return (
             <View style={{flex:1}}>
-                
                 <Modal 
                     animationType="slide"
                     transparent={true}
                     visible={this.state.modalVisible}>
                     <View style={{height:'100%',width:'100%',justifyContent:'center',alignItems:'center'}}>
                     <View style={{height:300,width:300,borderRadius:15,alignItems:'center',justifyContent:'center'}}>
-                   
-                        <ActivityIndicator size="large"/>
+                            <ActivityIndicator size='large'/>
                     </View>
                     </View>
                 </Modal>
+      
                 <View style={Styles.ViewHeader}>
                 <Text style={Styles.TextHeader}> REGISTER </Text>
                 </View>

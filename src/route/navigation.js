@@ -23,12 +23,12 @@ const Route=createStackNavigator({
             header:null
           })
     },
-    // Home:{
-    //     screen:Home,
-    //     navigationOptions:()=>({
-    //         header:null
-    //       })
-    // },
+    Home:{
+        screen:App,
+        navigationOptions:()=>({
+            header:null
+          })
+    },
     kalkulator:{
         screen:Kal,
         navigationOptions:()=>({
@@ -41,18 +41,13 @@ const Route=createStackNavigator({
             header:null
           })
     },
-    // todolist:{
-    //     screen:Home,
-    //     navigationOptions:()=>({
-    //         header:null
-    //       })
-    // },
     todo:{
         screen:Todo,
         navigationOptions:()=>({
             header:null
           })
-    }
+    },
+  
 
 })
 
